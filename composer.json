@@ -8,10 +8,11 @@
 		"guzzle/guzzle": "dev-master",
 		"php-ffmpeg/php-ffmpeg": "dev-master",
 		"barryvdh/laravel-ide-helper": "1.*",
-		"pda/pheanstalk": "dev-master"
+		"pda/pheanstalk": "dev-master",
+		"artdarek/oauth-4-laravel": "dev-master"
 	},
 	"require-dev": {
-		"way/generators": "1.0.*@dev",
+		"way/generators": "dev-master",
 		"itsgoingd/clockwork": "dev-master"
 	},
 	"autoload": {

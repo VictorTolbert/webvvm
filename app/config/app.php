@@ -108,7 +108,8 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
 		'Clockwork\Support\Laravel\ClockworkServiceProvider',
-        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider'
+		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+		'Artdarek\OAuth\OAuthServiceProvider',
 
 	),
 
@@ -176,6 +177,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Clockwork'       => 'Clockwork\Support\Laravel\Facade',
+		'OAuth'           => 'Artdarek\OAuth\Facade\OAuth',
 
 	),
 

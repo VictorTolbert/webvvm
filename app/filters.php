@@ -36,6 +36,12 @@ Route::filter('auth', function () {
 });
 
 
+Route::filter('oauth', function () {
+	$access_token = Session::get('access_token');
+	if ( is_null($access_token) ) return Redirect::to('login');
+});
+
+
 Route::filter('auth.basic', function () {
 	return Auth::basic();
 });

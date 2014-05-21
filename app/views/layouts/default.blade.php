@@ -24,8 +24,7 @@
 		App.apiURL = '{{ URL::to("api") }}';
 		App.assetURL = '{{ URL::to("assets") }}';
 	</script>
-	<script src="/assets/js/wow.min.js"></script>
-	<script>new WOW().init(); </script>
+
 	@yield('head')
 </head>
 <body>

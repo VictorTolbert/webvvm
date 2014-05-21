@@ -8,18 +8,10 @@ var onConnect = function () {
 		console.log(json.fields.key, json.operation);
 
 		if (json.operation == 'add') {
-			$.get('/messages/' + json.fields.key);
 			setTimeout(function () {
 				window.location.reload();
 				$('#' + json.fields.key).highlight().addClass('animated bounceIn').delay(800).slideDown();
 			}, 100);
-//			$.ajax({
-//				url: "",
-//				context: document.body,
-//				success: function (s, x) {
-//					$(this).html(s);
-//				}
-//			});
 		}
 
 		if(json.operation == 'update') {
@@ -95,19 +87,6 @@ $(function() {
 		event.preventDefault();
 	});
 
-	$('#mark-selected-read').on('click', function (event) {
-		var message = $(this).closest('.message');
-		var message_ids = ['IFGVMORVG44A', 'IFGVMORVG43A'];
-		$.ajax({
-			url: '/messages/all',
-			type: "PUT",
-			contentType: "application/json; charset=utf-8",
-			dataType: "json",
-			data: JSON.stringify({ "messages": message_ids })
-		});
-		event.preventDefault();
-	});
-
 	$('#read-selected, #delete-selected').on('click', function (event) {
 		var message_ids, operation;
 		message_ids = $(".message :checkbox:checked").map(function () {
@@ -163,18 +142,20 @@ $(function() {
 	});
 
 	$(document).on('click', '.media-player', function (event) {
+		var id = $(this).closest('.message').attr('id');
 		var audio = $(this).closest('.message').find('audio')[0];
+
 		if (audio.paused) {
-			audio.play();
+			$.get('/messages/' + id).done(function(){
+				if( audio.currentTime == 0) {
+					audio.load();
+				}
+				audio.play();
+			});
 			$(this).find('i').removeClass('fa-play-circle').addClass('fa-pause');
 			$('audio').not(audio).each(function(){
 				var duration = $(this).closest('.media-body').find('.duration').html();
 				this.load();
-				$(this).on('loadstart', function(){
-					console.log($(this).closest('.media-body').find('.duration').html(duration));
-					console.log(duration);
-				});
-//				console.log(duration);
 			});
 		} else {
 			audio.pause();
@@ -217,13 +198,15 @@ $(function() {
 
 window.onload = function () {
 
-	var ids = $(".message").map(function () {
-		return this.id;
-	}).get();
-
-	$('.message').each(function () {
-		var xhr = $.get('/messages/' + this.id);
-	});
-
-	$('audio').load();
+//	var ids = $(".message").map(function () {
+//		return this.id;
+//	}).get();
+//
+//	$('.message').each(function () {
+//		$.ajax({
+//			url: 'http://localhost:8000/audio/' + this.id
+//		});
+//	});
+//
+//	$('audio').load();
 };

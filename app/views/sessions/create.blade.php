@@ -1,8 +1,8 @@
 @extends('layouts.default')
 
 @section('content')
-<h1>Login</h1>
-
+<h1>Access Voicemail</h1>
+<!--
 {{ Form::open(array('route' => 'sessions.store')) }}
 <div class="form-group">
 	{{ Form::label('username', 'Username:') }}
@@ -23,4 +23,9 @@
 	{{ link_to_route('password_resets.create', 'Forgot your password?') }}
 </div>
 {{ Form::close() }}
+-->
+<div class="form-group">
+	{{ link_to('login/oauth', 'Login with AT&T', $attributes = array('class' => 'btn btn-primary'), null) }}
+</div>
+
 @stop

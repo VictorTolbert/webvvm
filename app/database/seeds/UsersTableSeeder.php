@@ -49,6 +49,13 @@ class UsersTableSeeder extends Seeder {
 			'email' => 'vt124m@att.com',
 			'password' => 'uplift'
 		]);
+
+		User::create([
+			'username' => '2138430364',
+			'email' => 'vtolbert@vticonsulting.com',
+			'password' => 'uplift'
+		]);
+
 	}
 
 }

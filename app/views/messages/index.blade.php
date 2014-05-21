@@ -48,7 +48,7 @@
 		</td>
 		<td>
 			<div class="media">
-                <div class="progress-bar"></div>
+				<div class="progress-bar"></div>
 				<a class="delete-message" href="#">
 					<i class="fa fa-trash-o  pull-right"></i>
 				</a>

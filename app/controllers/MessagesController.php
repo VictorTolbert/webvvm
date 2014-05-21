@@ -8,13 +8,17 @@ class MessagesController extends \BaseController {
 	private $client;
 	private $message_ids;
 	private $ctn_id;
+	private $access_token;
 
 	public function __construct()
 	{
+		$this->access_token = Session::get('access_token');
 		$this->ctn_id = (is_object(Auth::user())) ? Auth::user()->username : "";
+//		$this->client = new Client(Config::get('webvvm.api.server'), ['request.options' => ['proxy' => 'http://127.0.0.1:8888']]);
 		$this->client = new Client(Config::get('webvvm.api.server'));
 		$this->client->setDefaultOption('headers', ['ctn_id' => $this->ctn_id]);
-		$this->beforeFilter('auth');
+		$this->client->setDefaultOption('headers', ['Authorization' => "Bearer " . $this->access_token]);
+		$this->beforeFilter('oauth');
 		$this->afterFilter('@convertAmrToMp3', ['only' => 'show']);
 	}
 

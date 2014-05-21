@@ -12,8 +12,9 @@
 
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		@unless (Auth::check())
+		@unless (Auth::check() or Session::get('access_token') )
 			<p class="navbar-text navbar-right">You are not signed in. {{ link_to_action('SessionsController@create', "Login") }}</p>
+			}
 		@else
 			<p class="navbar-text navbar-right">{{ (isset($ctn_id)) ? format_phone($ctn_id) : "" }} {{ link_to_action('SessionsController@destroy', "Logout" ) }}</p>
 		@endunless

@@ -2,6 +2,6 @@
 
 return [
     'api' => [
-        "server" => "http://198.225.136.86:8180"
+		"server" => "https://api.foundry.att.com/a1"
     ]
 ];
